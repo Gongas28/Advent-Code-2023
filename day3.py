@@ -26,7 +26,6 @@ def sum_of_part_numbers(engine_schematic):
     
     return total_sum
 
-# Example engine schematic
 engine_schematic = """
 467..114..
 ...*......
@@ -42,4 +41,3 @@ engine_schematic = """
 
 result = sum_of_part_numbers(engine_schematic)
 print(result)
-
