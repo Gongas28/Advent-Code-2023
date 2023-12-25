@@ -24,7 +24,7 @@ public class WaysToBeatRecord {
     }
 
     public static void main(String[] args) {
-        // Exemplo de dados de entrada
+        
         int[] times = {7, 15, 30};
         int[] distances = {9, 40, 200};
 
