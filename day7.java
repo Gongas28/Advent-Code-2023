@@ -13,7 +13,6 @@ public class PokerGame {
         int totalWinnings = calculateWinnings(handsAndBids);
         System.out.println("Total Winnings: " + totalWinnings);
 
-        // Print the rank of each hand
         for (int i = 0; i < handsAndBids.size(); i++) {
             String[] handAndBid = handsAndBids.get(i);
             String hand = handAndBid[0];
