@@ -22,7 +22,6 @@ class Hailstone {
 
 public class HailstoneCollision {
     public static void main(String[] args) {
-        // Create a list of hailstones
         List<Hailstone> hailstones = new ArrayList<>();
         hailstones.add(new Hailstone(19, 13, 30, -2, 1, -2));
         hailstones.add(new Hailstone(18, 19, 22, -1, -1, -2));
@@ -30,16 +29,13 @@ public class HailstoneCollision {
         hailstones.add(new Hailstone(12, 31, 28, -1, -2, -1));
         hailstones.add(new Hailstone(20, 19, 15, 1, -5, -3));
 
-        // Set the test area boundaries
         int minX = 7;
         int maxX = 27;
         int minY = 7;
         int maxY = 27;
 
-        // Set the number of time steps to simulate
         int timeSteps = 1000;
 
-        // Check for intersections
         int intersections = 0;
 
         for (int t = 0; t < timeSteps; t++) {
@@ -54,7 +50,6 @@ public class HailstoneCollision {
                 }
             }
 
-            // Move hailstones to the next time step
             for (Hailstone hailstone : hailstones) {
                 hailstone.move();
             }
@@ -64,7 +59,6 @@ public class HailstoneCollision {
     }
 
     private static boolean willIntersect(Hailstone a, Hailstone b, int minX, int maxX, int minY, int maxY) {
-        // Check if the paths of two hailstones will intersect within the specified test area
         int ax = a.x;
         int ay = a.y;
         int bx = b.x;
