@@ -7,7 +7,7 @@ public class DesertIslandNavigation {
 
     public static void main(String[] args) {
         initializeNetwork();
-        String instructions = "LLR"; // Replace this with your actual input
+        String instructions = "LLR";
         String startNode = "AAA";
         String destinationNode = "ZZZ";
 
@@ -42,6 +42,6 @@ public class DesertIslandNavigation {
             }
         }
 
-        return steps; // If the destination is not reached in the initial set of instructions
+        return steps;
     }
 }
