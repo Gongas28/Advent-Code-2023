@@ -12,7 +12,6 @@ def extrapolate_oasis_report(oasis_report):
 
     return sum(extrapolated_values)
 
-# Example usage
 oasis_report = [
     [0, 3, 6, 9, 12, 15],
     [1, 3, 6, 10, 15, 21],
