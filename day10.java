@@ -3,11 +3,10 @@ import java.util.Queue;
 
 public class PipeLoop {
 
-    static int[] dx = {0, 1, 0, -1}; // directions: up, right, down, left
+    static int[] dx = {0, 1, 0, -1};
     static int[] dy = {-1, 0, 1, 0};
 
     public static void main(String[] args) {
-        // Example input
         String[] sketch = {
                 ".....",
                 ".F-7.",
@@ -26,7 +25,6 @@ public class PipeLoop {
 
         int startX = -1, startY = -1;
 
-        // Find the starting position
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (sketch[i].charAt(j) == 'S') {
@@ -39,17 +37,14 @@ public class PipeLoop {
 
         int[][] distances = new int[rows][cols];
 
-        // Initialize distances array with -1
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 distances[i][j] = -1;
             }
         }
 
-        // Use BFS to calculate distances
         bfs(sketch, startX, startY, distances);
 
-        // Find the farthest point in the loop
         int maxDistance = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -79,11 +74,9 @@ public class PipeLoop {
                 int newX = x + dx[direction];
                 int newY = y + dy[direction];
 
-                // Check if the new position is within bounds and not visited
                 if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && distances[newX][newY] == -1) {
                     char pipe = sketch[newX].charAt(newY);
                     if (isValidMove(pipe, direction)) {
-                        // Valid move, update distance and add to the queue
                         distances[newX][newY] = distances[x][y] + 1;
                         queue.add(new int[]{newX, newY});
                     }
@@ -93,7 +86,6 @@ public class PipeLoop {
     }
 
     private static boolean isValidMove(char pipe, int direction) {
-        // Check if the pipe allows movement in the specified direction
         switch (pipe) {
             case 'S':
             case 'F':
