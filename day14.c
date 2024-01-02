@@ -1,10 +1,13 @@
-#include <iostream>
-#include <vector>
+#include <stdio.h>
+#include <stdlib.h>
 
-int calculateTotalLoad(const std::vector<std::string>& platform) {
+#define ROWS 10
+#define COLS 10
+
+int calculateTotalLoad(char platform[ROWS][COLS]) {
     int totalLoad = 0;
-    int rows = platform.size();
-    int cols = platform[0].size();
+    int rows = ROWS;
+    int cols = COLS;
 
     for (int col = 0; col < cols; ++col) {
         for (int row = rows - 1; row >= 0; --row) {
@@ -18,9 +21,9 @@ int calculateTotalLoad(const std::vector<std::string>& platform) {
     return totalLoad;
 }
 
-void tiltToNorth(std::vector<std::string>& platform) {
-    int rows = platform.size();
-    int cols = platform[0].size();
+void tiltToNorth(char platform[ROWS][COLS]) {
+    int rows = ROWS;
+    int cols = COLS;
 
     for (int col = 0; col < cols; ++col) {
         int emptyRow = -1;
@@ -36,7 +39,9 @@ void tiltToNorth(std::vector<std::string>& platform) {
 
         for (int row = emptyRow + 1; row < rows; ++row) {
             if (platform[row][col] == 'O') {
-                std::swap(platform[row][col], platform[emptyRow][col]);
+                char temp = platform[row][col];
+                platform[row][col] = '.';
+                platform[emptyRow][col] = temp;
                 ++emptyRow;
             }
         }
@@ -44,7 +49,7 @@ void tiltToNorth(std::vector<std::string>& platform) {
 }
 
 int main() {
-    std::vector<std::string> platform = {
+    char platform[ROWS][COLS] = {
         "O....#....",
         "O.OO#....#",
         ".....##...",
@@ -60,7 +65,7 @@ int main() {
     tiltToNorth(platform);
 
     int totalLoad = calculateTotalLoad(platform);
-    std::cout << "Total load on the north support beams: " << totalLoad << std::endl;
+    printf("Total load on the north support beams: %d\n", totalLoad);
 
     return 0;
 }
